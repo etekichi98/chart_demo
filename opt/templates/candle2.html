@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>{{ title }}</title>
+        <link rel="stylesheet" type= "text/css" href= "{{ url_for('static', filename='css/candle2.css') }}">
+    </head>
+    <body>
+        <p class="resizeimage">
+            <img src="/candle?code={{ code }}&term={{ term }}&volume={{ volume }}"/>
+        </p>
+    </body>
+</html>
