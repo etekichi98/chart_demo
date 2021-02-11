@@ -1,6 +1,10 @@
 
 # 株価チャート配信サーバの使い方
 
+解説記事はこちら：
+
+https://saturday-in-the-park.netlify.app/TradingTools/08_ChartServer/
+
 
 株価チャート配信サーバを起動する
 ~~~
