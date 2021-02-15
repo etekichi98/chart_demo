@@ -4,30 +4,37 @@
         <meta charset="utf-8"/>
         <title>{{ title }}</title>
         <link rel="stylesheet" type= "text/css" href= "{{ url_for('static', filename='css/list.css') }}">
-    </head>
-    <body onload="document.forms.frm.sel.size = 30;">
-    <script>
+        <script>
+        window.onload = function(){
+            document.forms.frm.select_code.size = window.innerHeight/22;
+            document.getElementById('inline-frame').height = window.innerHeight-20;
+            document.getElementById('inline-frame').width = window.innerWidth-200;
+        }
         window.onresize = function change_height() {
-            document.forms.frm.select_code.size = window.innerHeight/24;
+            document.forms.frm.select_code.size = window.innerHeight/22;
+            document.getElementById('inline-frame').height = window.innerHeight-20;
+            document.getElementById('inline-frame').width = window.innerWidth-200;
         }
         function disp_chart() {
             var value = document.getElementById("select_code").value;
             var url = '/candle2?code='+value+'&term=100';
             document.getElementById('inline-frame').contentWindow.location.replace(url);
         }
-    </script>    
-    <form id="frm" width=20%>
-    <select id="select_code" size="30" onchange="disp_chart()">
+        </script>
+    </head>
+    <body>
+        <form id="frm" >
+            <select id="select_code" size="30" onchange="disp_chart()">
 {% for member in members %}
-    <option value="{{ member.code}}">{{ member.code}} {{ member.name }}</option>
+                <option value="{{ member.code}}">{{ member.code}} {{ member.name }}</option>
 {% endfor %}
-    </select>
-    </form>
-    <iframe id="inline-frame"
-       align="top"
-       width=80%
-       height=600
-       src="/candle?code=1001">
-    </iframe>
+            </select>
+        </form>
+        <iframe id="inline-frame"
+            align="top"
+            width = 800
+            height = 575
+            src="/">
+        </iframe>
     </body>
 </html>

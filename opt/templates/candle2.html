@@ -1,13 +1,52 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
     <head>
         <meta charset="utf-8"/>
         <title>{{ title }}</title>
         <link rel="stylesheet" type= "text/css" href= "{{ url_for('static', filename='css/candle2.css') }}">
+        <script>
+            var Col = "red"; // 十字カーソルの色
+            var winx,winy;
+            var sFlag = false;
+            var count = 0;
+            var my = 0;
+            var mx = 0;
+            var lay;
+            var coln;
+
+            document.onmousemove = mouse_move;
+            
+            function mouse_move(e){
+                mx = e.pageX;
+                my = e.pageY;
+                if(mx < 1) mx = 1;
+                if(mx > winx-2) mx = winx - 2;
+                if(my < 1) my = 1;
+                if(my > winy-2) my = winy - 2;
+                if(sFlag) main();
+            }
+            function init(){
+                document.getElementById("VerticalLine").style.backgroundColor = Col;
+                document.getElementById("VerticalLine").style.top = my;
+                document.getElementById("VerticalLine").style.height = innerHeight-1;
+                document.getElementById("HorizontalLine").style.backgroundColor = Col;
+                document.getElementById("HorizontalLine").style.left = mx;
+                document.getElementById("HorizontalLine").style.width = innerWidth-1;
+                sFlag = true;
+            }
+            function main(){
+                document.getElementById("VerticalLine").style.left = mx;
+                document.getElementById("HorizontalLine").style.top = my;
+            }
+        </script>
     </head>
-    <body>
+    <body onload="init()">
         <p class="resizeimage">
+            <!--チャート画像-->
             <img src="/candle?code={{ code }}&term={{ term }}&volume={{ volume }}"/>
+            <!--十字カーソル-->
+            <div class="CrossCursor" id="VerticalLine"> </div>
+            <div class="CrossCursor" id="HorizontalLine"> </div>
         </p>
     </body>
 </html>

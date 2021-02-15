@@ -1,1 +1,14 @@
-.resizeimage img { width: 100% }
+body{
+    background-color: #FFF;
+}
+.CrossCursor{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1px;
+    height: 1px;
+    font-size: 1px;
+}
+.resizeimage img {
+    width: 90%;
+}
