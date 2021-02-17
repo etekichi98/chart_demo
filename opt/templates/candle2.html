@@ -26,11 +26,13 @@
                 if(sFlag) main();
             }
             function init(){
+                winx = innerWidth;
+                winy = innerHeight;
                 document.getElementById("VerticalLine").style.backgroundColor = Col;
-                document.getElementById("VerticalLine").style.top = my;
+                document.getElementById("VerticalLine").style.top = 0;
                 document.getElementById("VerticalLine").style.height = innerHeight-1;
                 document.getElementById("HorizontalLine").style.backgroundColor = Col;
-                document.getElementById("HorizontalLine").style.left = mx;
+                document.getElementById("HorizontalLine").style.left = 0;
                 document.getElementById("HorizontalLine").style.width = innerWidth-1;
                 sFlag = true;
             }
